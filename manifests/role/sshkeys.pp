@@ -3,7 +3,7 @@
 class base::role::sshkeys (
   $key_sources = hiera('ssh::key_sources', ['ssh::keys']),
 ) {
-    $keys_merged = merge_hiera_hashes($_key_sources)
+    $keys_merged = merge_hiera_hashes($key_sources)
 
     class { 'base::profile::ssh::authorized_keys':
       authorized_keys => $keys_merged,
